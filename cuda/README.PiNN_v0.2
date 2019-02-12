@@ -1,0 +1,13 @@
+sudo singularity build --sandbox  PiNN shub://pmitev/Teoroo-singularity:u18.04_cuda9.2
+   
+sudo singularity shell --writable PiNN
+   
+  cd /usr/
+  git clone https://pmitev@github.com/Teoroo-CMC/PiNN_dev.git
+  cd /usr/PiNN_dev/          
+  git checkout v0.2 
+  pip install -e /usr/PiNN_dev
+   
+sudo singularity build PiNN.sif PiNN
+
+singularity run --nv PiNN.sif

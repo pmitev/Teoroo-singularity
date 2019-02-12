@@ -1,0 +1,5 @@
+ASE_DB_NAMES = ['/tmp/ase-db/test.db']
+ASE_DB_HOMEPAGE = 'http://localhost:8080'
+ASE_DB_TMPDIR = '/tmp'
+ASE_DB_FOOTER = ''
+ASE_DB_DOWNLOAD = ''
