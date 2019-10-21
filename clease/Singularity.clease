@@ -1,0 +1,25 @@
+Bootstrap:  docker
+From: ubuntu:18.04
+
+%runscript
+  clease $@
+
+%setup
+
+%files
+
+%environment
+
+%post
+  apt-get update && apt-get -y dist-upgrade && apt-get install -y gawk wget git python3-pip && apt-get clean
+  cd /
+  git clone https://gitlab.com/computationalmaterials/clease.git
+  cd clease
+  python3 -m pip install -r requirements.txt
+  python3 -m pip install .
+  python3 -m pip install kivy
+  python3 -m pip install 'https://github.com/kivy-garden/graph/archive/master.zip'
+  
+  
+  
+
