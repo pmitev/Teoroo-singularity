@@ -35,7 +35,7 @@ From: ubuntu:18.04
   cd lammps-stable_7Aug2019 && mkdir build && cd build
   cmake -D CMAKE_INSTALL_PREFIX=/opt/lammps \
         -D CMAKE_BUILD_TYPE=Release -D BUILD_LIB=on -D BUILD_SHARED_LIBS=on \
-        -D PKG_USER-REAXC=yes -D PKG_MANYBODY=yes -D PKG_USER-MEAMC=yes -D PKG_USER_REAXC=yes ../cmake
+        -D PKG_USER-REAXC=yes -D PKG_MANYBODY=yes -D PKG_MC=yes -D PKG_USER-MEAMC=yes -D PKG_USER_REAXC=yes ../cmake
 
   make -j $(grep -c ^processor /proc/cpuinfo)
   make install
