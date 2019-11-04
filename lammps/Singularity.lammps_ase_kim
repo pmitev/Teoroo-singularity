@@ -12,6 +12,7 @@ From: ubuntu:18.04
 
 %files
   stable_7Aug2019.tar.gz /
+  amp.params /
 
 %environment
   PATH=$PATH:/opt/lammps/bin
@@ -60,6 +61,11 @@ kim-api-collections-management list
   cp ../../amp/model/neuralnetwork.f90 amp_model_driver/neuralnetwork.F90
 
   kim-api-collections-management install user ./amp_model_driver
+
+  cd /
+  mv amp.params /amp/tools/amp-kim/amp_parameterized_model/
+  cd /amp/tools/amp-kim/
+  kim-api-collections-management install user ./amp_parameterized_model
 #------------------------
 
   cd /lammps-stable_7Aug2019/python
