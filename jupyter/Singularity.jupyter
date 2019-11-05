@@ -49,7 +49,7 @@ jupyter nbextension enable codefolding/main
 jupyter nbextensions_configurator enable --system
 
 /usr/bin/env python3 -m  pip install --upgrade jupyter-tensorboard
-jupyter tensorboard enable --systema
+jupyter tensorboard enable --system
 
 /usr/bin/env python3 -m  pip install --upgrade jupyterlab-git
 jupyter labextension install @jupyterlab/git
