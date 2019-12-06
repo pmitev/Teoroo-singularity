@@ -34,6 +34,7 @@ From: ubuntu:18.04
   cmake -D CMAKE_INSTALL_PREFIX=/opt/lammps \
         -D CMAKE_BUILD_TYPE=Release -D BUILD_LIB=on -D BUILD_SHARED_LIBS=on \
         -D PKG_USER-REAXC=yes -D PCK_MC=yes -D PKG_MANYBODY=yes -D PKG_USER-MEAMC=yes \
+        -D PKG_MOLECULE=yes -D PKG_RIGID=yes \
         -D PKG_KSPACE=yes -D PKG_CORESHELL=yes \
         ../cmake
 
