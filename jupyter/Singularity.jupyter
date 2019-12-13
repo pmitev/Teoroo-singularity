@@ -21,7 +21,6 @@ From: ubuntu:18.04
   
 /usr/bin/env python3 -m  pip install --upgrade pip  
 /usr/bin/env python3 -m  pip install --upgrade ase
-/usr/bin/env python3 -m  pip install --upgrade nglview
 /usr/bin/env python3 -m  pip install --upgrade pymatgen
 /usr/bin/env python3 -m  pip install --upgrade phonopy
 /usr/bin/env python3 -m  pip install --upgrade jupyter
@@ -51,4 +50,8 @@ jupyter nbextensions_configurator enable --system
 /usr/bin/env python3 -m  pip install --upgrade jupyter-tensorboard
 jupyter tensorboard enable --system
 
+/usr/bin/env python3 -m  pip install --upgrade nglview
 jupyter-nbextension enable nglview --py --sys-prefix
+
+/usr/bin/env python3 -m  pip install --upgrade ipyparallel
+ipcluster nbextension enable

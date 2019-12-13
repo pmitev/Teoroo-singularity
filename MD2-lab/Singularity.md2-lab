@@ -49,4 +49,5 @@ From: ubuntu:18.04
 #------------------------
   python3 -m pip install --upgrade pip
   python3 -m pip install ase pymatgen pandas
+  python3 -m pip install ase ipython
 
