@@ -13,6 +13,8 @@ From: ubuntu:18.04
   export PATH=$PATH:/usr/local/xcrysden-1.5.60-bin-semishared
 
 %post
+  export DEBIAN_FRONTEND=noninteractive
+  
   apt-get update && apt-get -y dist-upgrade && apt-get install -y gawk wget libxmu6 libxss1 libxft2 libquadmath0  gnuplot grace rasmol paraview blender povray && apt-get clean
   cd /
   
