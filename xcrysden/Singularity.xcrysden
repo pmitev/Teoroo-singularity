@@ -14,7 +14,7 @@ From: ubuntu:18.04
 
 %post
   export DEBIAN_FRONTEND=noninteractive
-  apt-get update && apt-get -y dist-upgrade && apt-get install -y gawk wget libxss1 libxft2 libquadmath0 \
+  apt-get update && apt-get -y dist-upgrade && apt-get install -y gawk wget libxss1 libxft2 libquadmath0 bc \
           tk libglu1-mesa libtogl2 libfftw3-3 libxmu6 imagemagick openbabel libgfortran5 && apt-get clean
   cd /
   
