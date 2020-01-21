@@ -26,6 +26,3 @@ From: ubuntu:18.04
   python3 -m pip install 'https://github.com/kivy-garden/graph/archive/master.zip'
   python3 -m pip install .
   
-  
-  
-
