@@ -9,6 +9,7 @@ From: ubuntu:18.04
 %files
 
 %environment
+  export PYTHONNOUSERSITE=True
 
 %post
   export DEBIAN_FRONTEND=noninteractive
@@ -20,9 +21,10 @@ From: ubuntu:18.04
   cd /
   git clone https://gitlab.com/computationalmaterials/clease.git
   cd clease
-  python3 -m pip install --upgrade pip
-  python3 -m pip install -r requirements.txt
-  python3 -m pip install kivy
+  python3 -m pip install --upgrade --no-cache-dir pip==19.3.1
+  python3 -m pip install --upgrade --no-cache-dir setuptools numpy
+#  python3 -m pip install -r requirements.txt
+  python3 -m pip install --no-cache-dir kivy
   python3 -m pip install 'https://github.com/kivy-garden/graph/archive/master.zip'
   python3 -m pip install .
   
