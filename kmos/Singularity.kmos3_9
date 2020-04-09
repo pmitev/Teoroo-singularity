@@ -22,14 +22,10 @@ From: ubuntu:16.04
   wget http://launchpadlibrarian.net/109052632/python-support_1.0.15_all.deb
   dpkg -i python-support_1.0.15_all.deb
 
+  python -m pip install python-kmos
+
   wget https://gist.github.com/mhoffman/d2a9466c22f33a9e046b/raw/4c73c5029f3c01e656f161c7459f720aff331705/gazpacho_0.7.2-3_all.deb
   dpkg -i gazpacho_*.deb
-
-  #python -m pip install python-kmos
-  git clone https://github.com/mhoffman/kmos.git
-  cd kmos
-  sed -ie "s/ase/ase=3.13.0/" requirements.txt
-  ./setup.py install
 
   python -m pip install ase==3.13.0
 
