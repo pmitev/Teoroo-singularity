@@ -16,7 +16,7 @@ From: ubuntu:16.04
  
   apt-get update && apt-get -y dist-upgrade && apt-get install -y gawk wget git gfortran python python-dev python-pip \
                      python-glade2 python-kiwi python-lxml python-gtk2 \
-                     python-matplotlib python-numpy \
+                     python-matplotlib python-numpy ipython \
                      python-pygoocanvas libmtdev-dev libmtdev1 libgl1-mesa-glx libgl1-mesa-dev build-essential vim locales && apt-get clean
 
   wget http://launchpadlibrarian.net/109052632/python-support_1.0.15_all.deb
@@ -31,6 +31,6 @@ From: ubuntu:16.04
   sed -ie "s/ase/ase=3.13.0/" requirements.txt
   ./setup.py install
 
-  python -m pip install ase==3.13.0
+  python -m pip install --no-cache-dir ase==3.13.0
 
 
