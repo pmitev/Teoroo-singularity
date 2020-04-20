@@ -28,9 +28,9 @@ From: ubuntu:16.04
   #python -m pip install python-kmos
   git clone https://github.com/mhoffman/kmos.git
   cd kmos
-  sed -ie "s/ase/ase=3.13.0/" requirements.txt
+  sed -ie "s/ase/ase=3.9.1/" requirements.txt
   ./setup.py install
 
-  python -m pip install --no-cache-dir ase==3.13.0
+  python -m pip install --no-cache-dir ase==3.9.1
 
 
