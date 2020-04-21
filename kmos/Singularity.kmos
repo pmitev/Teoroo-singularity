@@ -7,6 +7,7 @@ From: ubuntu:16.04
 %setup
 
 %files
+  species.py /tmp
 
 %environment
   export PYTHONNOUSERSITE=True
@@ -28,7 +29,12 @@ From: ubuntu:16.04
   #python -m pip install python-kmos
   git clone https://github.com/mhoffman/kmos.git
   cd kmos
+  # fix version for ase
   sed -ie "s/ase/ase=3.9.1/" requirements.txt
+  
+  cp /tmp/species.py kmos/  
+
+  # Install KMOS
   ./setup.py install
 
   python -m pip install --no-cache-dir ase==3.9.1
