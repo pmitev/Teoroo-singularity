@@ -2,7 +2,7 @@ Bootstrap:  docker
 From: alpine
 
 %runscript
-  /usr/bin/gawk $*
+  /usr/bin/gawk "$@"
 %setup
 %files
 %environment
