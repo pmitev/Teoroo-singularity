@@ -1,16 +1,19 @@
 Bootstrap:  docker
-From: alpine
+From: ubuntu:20.04
 
 %runscript
-  meld $@
+  export XDG_RUNTIME_DIR=/tmp/.meld_$(uuidgen)
+  /usr/bin/meld $@
 
 %setup
 
 %files
 
 %environment
-
-%labels
+  
 
 %post
-  apk add --no-cache meld 
+  export DEBIAN_FRONTEND=noninteractive
+
+  apt-get update && apt-get -y dist-upgrade && apt-get install -y meld
+  apt-get clean
