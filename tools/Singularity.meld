@@ -1,0 +1,16 @@
+Bootstrap:  docker
+From: alpine
+
+%runscript
+  meld $@
+
+%setup
+
+%files
+
+%environment
+
+%labels
+
+%post
+  apk add --no-cache meld 
