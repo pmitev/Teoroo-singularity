@@ -64,7 +64,7 @@ From: ubuntu:20.04
 
   locale-gen en_US.UTF-8 &&  update-locale
 
-  apt-get update && apt-get install -y python3-pip python-pip
+  apt-get update && apt-get install -y python3-pip 
 
   /usr/bin/env python3 -m  pip install --no-cache-dir --upgrade pip
   /usr/bin/env python3 -m  pip install --no-cache-dir --upgrade ase
