@@ -20,21 +20,21 @@ From: ubuntu:20.04
                 libnetcdf-dev libnetcdf-c++4-dev \
                 libboost-all-dev && apt-get clean
 
+mkdir /installs
 
 # HYPRE ============================================================================
 # https://computing.llnl.gov/projects/hypre-scalable-linear-solvers-multigrid-methods
 # https://github.com/hypre-space/hypre
-cd 
+cd /installs
 git clone --recursive https://github.com/hypre-space/hypre.git
 cd hypre
 git checkout v2.20.0
 git reset --hard v2.20.0
 cd src 
 ./configure CFLAGS=-fPIC CXXFLAGS=-fPIC --prefix=/opt/hypre && make install
-#cd && rm -r hypre
 
 # SAMRAI ===========================================================================
-cd
+cd /installs
 git clone --recursive https://github.com/LLNL/SAMRAI.git
 cd SAMRAI
 git checkout v-4-0-3
@@ -42,14 +42,11 @@ git reset --hard v-4-0-3
 
 mkdir build && cd build
 cmake -DCMAKE_CXX_COMPILER=mpiCC -DCMAKE_Fortran_COMPILER=mpif77 -DHYPRE_DIR=/opt/hypre -DCMAKE_INSTALL_PREFIX=/opt/SAMRAI-v4.0.3 ..
-
-make
 make install
-#cd && rm -r SAMRAI
 
 # SUNDIALS =========================================================================
 # https://github.com/LLNL/sundials
-cd
+cd /installs
 git clone --recursive https://github.com/LLNL/sundials.git
 cd sundials
 git checkout v5.6.1
@@ -57,13 +54,15 @@ git reset --hard v5.6.1
 
 mkdir build && cd build
 cmake -DCMAKE_CXX_COMPILER=mpiCC -DENABLE_MPI=ON -DENABLE_HYPRE=ON -DHYPRE_INCLUDE_DIR=/opt/hypre/include -DHYPRE_LIBRARY_DIR=/opt/hypre/lib ..
-#cd && rm -r sundials
+make install
 
 # AMPE =============================================================================
-#cd /tmp
+#cd /
 #git clone --recursive https://github.com/LLNL/AMPE.git
 #cd AMPE
 #mkdir build && cd build
+
+#rm -r /installs
 
 
 
