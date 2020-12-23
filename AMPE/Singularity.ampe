@@ -11,6 +11,8 @@ From: ubuntu:20.04
 %files
 
 %environment
+  export PYTHONNOUSERSITE=True
+  export PATH=$PATH:/opt/AMPE/build/source/
 
 %post
   export DEBIAN_FRONTEND=noninteractive
@@ -19,7 +21,8 @@ From: ubuntu:20.04
                 build-essential cmake \
                 libhdf5-openmpi-dev libhdf5-dev \
                 libnetcdf-dev libnetcdf-c++4-dev \
-                libboost-all-dev && apt-get clean
+                libboost-all-dev \
+                python3-numpy python3-netcdf4 python3-matplotlib python3-scipy && apt-get clean
 
 mkdir /installs
 
@@ -34,17 +37,6 @@ git reset --hard v2.20.0
 cd src 
 ./configure CFLAGS=-fPIC CXXFLAGS=-fPIC --prefix=/opt/hypre && make install
 
-# SAMRAI ===========================================================================
-cd /installs
-git clone --recursive https://github.com/LLNL/SAMRAI.git
-cd SAMRAI
-git checkout v-4-0-3
-git reset --hard v-4-0-3
-
-mkdir build && cd build
-cmake -DCMAKE_CXX_COMPILER=mpiCC -DCMAKE_Fortran_COMPILER=mpif77 -DHYPRE_DIR=/opt/hypre -DCMAKE_INSTALL_PREFIX=/opt/SAMRAI-v4.0.3 ..
-make install
-
 # SUNDIALS =========================================================================
 # https://github.com/LLNL/sundials
 cd /installs
@@ -54,7 +46,18 @@ git checkout v5.6.1
 git reset --hard v5.6.1
 
 mkdir build && cd build
-cmake -DCMAKE_CXX_COMPILER=mpiCC -DENABLE_MPI=ON -DENABLE_HYPRE=ON -DHYPRE_INCLUDE_DIR=/opt/hypre/include -DHYPRE_LIBRARY_DIR=/opt/hypre/lib ..
+cmake -DCMAKE_CXX_COMPILER=mpiCC -DENABLE_MPI=ON ENABLE -DENABLE_HYPRE=ON -DHYPRE_INCLUDE_DIR=/opt/hypre/include -DHYPRE_LIBRARY_DIR=/opt/hypre/lib -DCMAKE_BUILD_TYPE=Release ..
+make install
+
+# SAMRAI ===========================================================================
+cd /installs
+git clone --recursive https://github.com/LLNL/SAMRAI.git
+cd SAMRAI
+git checkout v-4-0-3
+git reset --hard v-4-0-3
+
+mkdir build && cd build
+cmake -DCMAKE_CXX_COMPILER=mpiCC -DCMAKE_Fortran_COMPILER=mpif77 -DHYPRE_DIR=/opt/hypre -DCMAKE_INSTALL_PREFIX=/opt/SAMRAI-v4.0.3 -DCMAKE_BUILD_TYPE=Release ..
 make install
 
 # AMPE =============================================================================
