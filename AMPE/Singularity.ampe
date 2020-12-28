@@ -80,24 +80,19 @@ make -j $NCPU && make install
 # module use /etc/modulefiles
 # module load mpi/mpich-x86_64
 
-#cd /opt
-#git clone --recursive https://github.com/LLNL/AMPE.git
-#cd AMPE
-#mkdir build && cd build
-#
-#rm -rf CMakeCache.txt
-#rm -rf CMakeFiles/
-#rm -f  cmake_install.cmake
-#rm -f  Makefile
-#cmake -DCMAKE_CXX_COMPILER=mpic++ -DCMAKE_C_COMPILER=mpicc -DCMAKE_Fortran_COMPILER=mpif77 -DSAMRAI_DIR=/opt/SAMRAI-v4.0.3 -DHYPRE_DIR=/opt/hypre -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DCMAKE_PREFIX_PATH=/opt/AMPE -DUSE_CVODE=ON -DNDIM="2" ..
-#make install
-#
-#rm -rf CMakeCache.txt
-#rm -rf CMakeFiles/
-#rm -f  cmake_install.cmake
-#rm -f  Makefile
-#cmake -DCMAKE_CXX_COMPILER=mpic++ -DCMAKE_C_COMPILER=mpicc -DCMAKE_Fortran_COMPILER=mpif77 -DSAMRAI_DIR=/opt/SAMRAI-v4.0.3 -DHYPRE_DIR=/opt/hypre -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DCMAKE_PREFIX_PATH=/opt/AMPE -DUSE_CVODE=ON -DNDIM="3" ..
-#make install
+cd /opt
+git clone --recursive https://github.com/LLNL/AMPE.git
+
+cd AMPE
+mkdir build && cd build
+cmake -DCMAKE_CXX_COMPILER=mpic++ -DCMAKE_C_COMPILER=mpicc -DCMAKE_Fortran_COMPILER=mpif77 -DSAMRAI_DIR=/opt/SAMRAI-v4.0.3 -DHYPRE_DIR=/opt/hypre -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DCMAKE_PREFIX_PATH=/opt/AMPE -DUSE_CVODE=ON -DNDIM="2" ..
+make install
+
+cd /opt/AMPE
+rm -r build
+mkdir build && cd build
+cmake -DCMAKE_CXX_COMPILER=mpic++ -DCMAKE_C_COMPILER=mpicc -DCMAKE_Fortran_COMPILER=mpif77 -DSAMRAI_DIR=/opt/SAMRAI-v4.0.3 -DHYPRE_DIR=/opt/hypre -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DCMAKE_PREFIX_PATH=/opt/AMPE -DUSE_CVODE=ON -DNDIM="3" ..
+make install
 
 
 #rm -r /installs
