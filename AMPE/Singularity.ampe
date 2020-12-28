@@ -96,4 +96,4 @@ cmake -DCMAKE_CXX_COMPILER=mpic++ -DCMAKE_C_COMPILER=mpicc -DCMAKE_Fortran_COMPI
 make install
 
 
-#rm -r /installs
+rm -rf /installs
