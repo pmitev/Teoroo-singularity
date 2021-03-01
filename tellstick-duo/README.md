@@ -12,7 +12,7 @@ docker rm extract
 
 ## RUN
 ```
-docker run -it  --privileged pmitev/tellstick-duo --name tellstick-duo
+docker run -d -v $(pwd)/tellstick.conf:/etc/tellstick.conf --privileged --name tellstick-duo pmitev/tellstick-duo
 ```
 
 ## Shell or command
