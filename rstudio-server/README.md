@@ -4,7 +4,7 @@
 # make var folder
 mkdir -p var
 
-# geberate password for the usser
+# generate password for the usser
 tmppass=$(mkpasswd --method=SHA-512 --stdin)
 grep $USER /etc/passwd | sed -e "s~:x:~:${tmppass}:~" > passwd
 
