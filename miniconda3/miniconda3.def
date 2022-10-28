@@ -1,0 +1,16 @@
+Bootstrap: docker
+From: continuumio/miniconda3
+
+%files
+  GenoPredPipe.yaml /opt
+
+%post
+  export LC_ALL=C
+  conda info
+  conda install -y -c defaults -c conda-forge  conda-build conda-pack
+  conda env create -n test -f /opt/GenoPredPipe.yaml
+
+  conda env remove -n test
+
+%runscript
+  conda "$@"
