@@ -20,7 +20,7 @@ From: ubuntu:22.04
           git git-lfs aria2 meld qemu-utils p7zip-full p7zip-rar jmol povray \
           units putty jq sqlitebrowser gv screen dos2unix vmtouch parallel pbzip2 elinks lynx \
           mosquitto-clients inkscape bat exa duf silversearcher-ag gnumeric binutils edfbrowser \
-          rsync xz-utils xarchiver tmux
+          rsync xz-utils xarchiver tmux oathtool
 
   strip --remove-section=.note.ABI-tag /usr/lib/x86_64-linux-gnu/libQt5Core.so.5
 
