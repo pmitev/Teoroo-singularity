@@ -1,0 +1,39 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+%environment
+  export LC_ALL=C
+  export PYTHONNOUSERSITE=True
+
+%post
+  export LC_ALL=C
+  export PYTHONNOUSERSITE=True
+  export DEBIAN_FRONTEND=noninteractive
+
+  # Package cache in /tmp
+  mkdir -p /tmp/apt22 &&  echo "Dir::Cache "/tmp/apt22";" > /etc/apt/apt.conf.d/singularity-cache.conf
+
+  # Download
+  export TMPD=/tmp/downloads
+  mkdir -p $TMPD
+  wget -P $TMPD -c  ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/reference/human_g1k_v37.fasta.gz
+  gunzip -c $TMPD/human_g1k_v37.fasta.gz > human_g1k_v37.fasta || true
+
+  apt-get update && apt-get -y dist-upgrade && \
+  apt-get install -y
+
+  python3 -m pip install --no-cache-dir --upgrade pip setuptools wheel
+
+cat << EOF > /tmp/myfile
+EOF
+  
+  # Patch for old kernels
+  strip --remove-section=.note.ABI-tag /usr/lib/x86_64-linux-gnu/libQt5Core.so.5 
+
+%runscript
+#!/bin/sh
+  if command -v $SINGULARITY_NAME > /dev/null 2> /dev/null; then
+    exec $SINGULARITY_NAME "$@"
+  else
+    echo "# ERROR !!! Command $SINGULARITY_NAME not found in the container"
+  fi
