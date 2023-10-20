@@ -1,0 +1,22 @@
+Bootstrap: docker
+From: archlinux
+
+%environment
+  export PYTHONNOUSERSITE=True
+
+%post
+  mkdir -p /tmp/pkg
+  sed -ie 's/#CacheDir.*/CacheDir     = \/tmp\/pkg/' /etc/pacman.conf
+
+  pacman -Syu --noconfirm qgis openexr libwebp \
+    mariadb-libs libjxl arrow poppler libheif cfitsio openjpeg2 podofo-0.9 \
+    python-pip python-requests python-jinja python-pygments \
+    python-owslib python-lxml python-yaml python-gdal python-psycopg2
+
+%runscript
+#!/bin/sh
+  if command -v $SINGULARITY_NAME > /dev/null 2> /dev/null; then
+    exec $SINGULARITY_NAME "$@"
+  else
+    echo "# ERROR !!! Command $SINGULARITY_NAME not found in the container"
+  fi
