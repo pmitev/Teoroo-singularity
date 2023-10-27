@@ -1,0 +1,20 @@
+FROM ubuntu:22.04
+
+ENV LC_ALL=C
+ENV PYTHONNOUSERSITE=True
+ENV PATH=$PATH:/opt/STAR-2.7.11a/bin/Linux_x86_64_static
+
+ARG DEBIAN_FRONTEND=noninteractive
+ARG aptPACKAGES=" build-essential cmake  gfortran \
+    python3-venv python3-pip \
+    " 
+
+RUN apt-get update && apt-get -y dist-upgrade 
+RUN apt-get install -y git wget vim gawk \
+    $aptPACKAGES
+
+RUN cd /opt &&  wget https://github.com/alexdobin/STAR/archive/2.7.11a.tar.gz && \
+    tar -xzf 2.7.11a.tar.gz &&  cd STAR-2.7.11a/source &&  make -j 4 STAR
+
+RUN python3 -m pip install --no-cache-dir --upgrade pip setuptools wheel && \
+    python3 -m pip install --no-cache-dir --upgrade macs3
