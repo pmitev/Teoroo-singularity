@@ -29,7 +29,7 @@ From: ubuntu:22.04
   # python3 -m pip install --no-cache-dir       --upgrade pip setuptools wheel
 
 
-  # Sourcing file when rinning/executing the container
+  # Sourcing file when running/executing the container
   # cp /usr/local/gromacs/bin/ACTRC.bash   /.singularity.d/env/99-ACTRC.sh
 
 #cat << EOF > /tmp/myfile
