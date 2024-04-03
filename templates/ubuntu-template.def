@@ -24,8 +24,11 @@ From: ubuntu:22.04
 
 
   # pip cache in /tmp
-  # export PIP_TMP=/tmp/pip-cache ;  mkdir -p $PIP_TMP
-  # python3 -m pip install --cache-dir $PIP_TMP --upgrade pip setuptools wheel
+  # export PIP_CACHE_DIR=/tmp/pip-cache ;  mkdir -p $PIP_CACHE_DIR
+  # pip newer than 24.0
+  # python3 -m pip install --upgrade pip setuptools wheel
+  # pip older than 24.0
+  # python3 -m pip install --cache-dir $PIP_CACHE_DIR --upgrade pip setuptools wheel
   # python3 -m pip install --no-cache-dir       --upgrade pip setuptools wheel
 
 
