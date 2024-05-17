@@ -37,6 +37,22 @@ From: ubuntu:22.04
 
 #cat << EOF > /tmp/myfile
 #EOF
+
+# Install R packages
+#cat << EOF | R --slave
+#  myNcpus <- as.integer(Sys.getenv("NCPU"))
+#  if(is.na(myNcpus)) myNcpus <- 1
+#  myNcpus <- max(1, myNcpus - 1)  # leave one CPU free
+# 
+#  local({          
+#  r <- getOption("repos")
+#  r["CRAN"] <- "https://ftp.acc.umu.se/mirror/CRAN/"
+#  options(repos = r)
+#  })
+#  
+#  install.packages("eva",   ask=FALSE, Ncpus=myNcpus)
+#  install.packages("XICOR", ask=FALSE, Ncpus=myNcpus)
+#EOF
   
   # Patch for old kernels
   # strip --remove-section=.note.ABI-tag /usr/lib/x86_64-linux-gnu/libQt5Core.so.5 
