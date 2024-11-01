@@ -2,11 +2,11 @@ Bootstrap: docker
 From: ubuntu:22.04
 
 %environment
-  export LC_ALL=C
+  export LC_ALL=C.utf8
   export PYTHONNOUSERSITE=True
 
 %post
-  export LC_ALL=C
+  export LC_ALL=C.utf8
   export PYTHONNOUSERSITE=True
   export DEBIAN_FRONTEND=noninteractive
 

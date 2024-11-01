@@ -1,6 +1,6 @@
 FROM ubuntu:22.04
 
-ENV LC_ALL=C
+ENV LC_ALL=C.utf8
 ENV PYTHONNOUSERSITE=True
 ENV PATH=$PATH:/opt/STAR-2.7.11a/bin/Linux_x86_64_static
 
