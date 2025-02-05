@@ -1,0 +1,40 @@
+Bootstrap: docker
+From: ubuntu:24.04
+
+%environment
+  export LC_ALL=C.utf8
+  export PYTHONNOUSERSITE=True
+
+%post
+  export LC_ALL=C.utf8
+  export PYTHONNOUSERSITE=True
+  export DEBIAN_FRONTEND=noninteractive
+
+  # apt packages cached in /tmp
+  mkdir -p /tmp/apt24 &&  echo "Dir::Cache "/tmp/apt24";" > /etc/apt/apt.conf.d/singularity-cache.conf
+
+  apt-get update && apt-get -y dist-upgrade && \
+  apt-get install -y wget git meson ninja-build aria2 python3-pip python3-setuptools \
+          libgtk-4-dev libadwaita-1-0 libadwaita-1-dev gettext ffmpeg \
+          desktop-file-utils
+
+
+  # pip cache in /tmp
+  export PIP_CACHE_DIR=/tmp/pip-cache ;  mkdir -p $PIP_CACHE_DIR
+  python3 -m pip install --cache-dir $PIP_CACHE_DIR --upgrade --break-system-packages aria2p yt-dlp
+
+  mkdir -p /installs && cd /installs
+  git clone https://github.com/giantpinkrobots/varia
+  cd varia
+  meson setup builddir
+  cd builddir
+  meson compile
+  meson install
+
+%runscript
+#!/bin/sh
+  if command -v $SINGULARITY_NAME > /dev/null 2> /dev/null; then
+    exec $SINGULARITY_NAME "$@"
+  else
+    echo "# ERROR !!! Command $SINGULARITY_NAME not found in the container"
+  fi
