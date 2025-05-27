@@ -15,8 +15,8 @@ From: ubuntu:24.04
   mkdir -p /tmp/apt24
   echo 'Dir::Cache /tmp/apt24;'  > /etc/apt/apt.conf.d/singularity-cache.conf 
 
-  apt-get update && apt-get -y dist-upgrade && apt-get install -y fuse-overlayfs
+  apt-get update && apt-get -y dist-upgrade && apt-get install -y fuse-overlayfs sshfs
  
 
 %runscript
-  fuse-overlayfs "$@"
+  bash "$@"
