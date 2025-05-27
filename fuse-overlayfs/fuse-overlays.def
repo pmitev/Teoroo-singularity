@@ -1,5 +1,5 @@
 Bootstrap: docker
-From: ubuntu:20.04
+From: ubuntu:24.04
 
 %setup
 
@@ -12,11 +12,11 @@ From: ubuntu:20.04
   export DEBIAN_FRONTEND=noninteractive
   export LC_ALL=C
 
-  mkdir -p /tmp/apt
-  echo 'Dir::Cache /tmp/apt;'  > /etc/apt/apt.conf.d/singularity-cache.conf 
+  mkdir -p /tmp/apt24
+  echo 'Dir::Cache /tmp/apt24;'  > /etc/apt/apt.conf.d/singularity-cache.conf 
 
   apt-get update && apt-get -y dist-upgrade && apt-get install -y fuse-overlayfs
  
 
 %runscript
-  /usr/bin/bash "$@"
+  fuse-overlayfs "$@"

@@ -1,111 +1,74 @@
-INFO:    Starting build...
-Getting image source signatures
-Copying blob sha256:08c01a0ec47e82ebe2bec112f373d160983a6d1e9e66627f66a3322bc403221b
-Copying config sha256:4aa048d3028f0ae53e1377ee6e4aea39b0a18b3236f718d20f710b1f8e87a53e
-Writing manifest to image destination
-Storing signatures
-2022/02/14 11:52:20  info unpack layer: sha256:08c01a0ec47e82ebe2bec112f373d160983a6d1e9e66627f66a3322bc403221b
+Build target 'fuse-overlays.sif' already exists and will be deleted during the build process. Do you want to continue? [y/N] INFO:    Starting build...
+INFO:    Fetching OCI image...
+INFO:    Extracting OCI image...
+INFO:    Inserting Singularity configuration...
 INFO:    Running setup scriptlet
 INFO:    Running post scriptlet
 + export DEBIAN_FRONTEND=noninteractive
 + export LC_ALL=C
-+ mkdir -p /tmp/apt
-+ echo Dir::Cache /tmp/apt;
++ mkdir -p /tmp/apt24
++ echo Dir::Cache /tmp/apt24;
 + apt-get update
-Get:1 http://archive.ubuntu.com/ubuntu focal InRelease [265 kB]
-Get:2 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]
-Get:3 http://archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]
-Get:4 http://archive.ubuntu.com/ubuntu focal-backports InRelease [108 kB]
-Get:5 http://archive.ubuntu.com/ubuntu focal/multiverse amd64 Packages [177 kB]
-Get:6 http://archive.ubuntu.com/ubuntu focal/universe amd64 Packages [11.3 MB]
-Get:7 http://archive.ubuntu.com/ubuntu focal/main amd64 Packages [1275 kB]
-Get:8 http://archive.ubuntu.com/ubuntu focal/restricted amd64 Packages [33.4 kB]
-Get:9 http://archive.ubuntu.com/ubuntu focal-updates/restricted amd64 Packages [1030 kB]
-Get:10 http://archive.ubuntu.com/ubuntu focal-updates/universe amd64 Packages [1132 kB]
-Get:11 http://security.ubuntu.com/ubuntu focal-security/universe amd64 Packages [839 kB]
-Get:12 http://archive.ubuntu.com/ubuntu focal-updates/main amd64 Packages [1973 kB]
-Get:13 http://archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 Packages [29.4 kB]
-Get:14 http://archive.ubuntu.com/ubuntu focal-backports/universe amd64 Packages [24.8 kB]
-Get:15 http://archive.ubuntu.com/ubuntu focal-backports/main amd64 Packages [50.8 kB]
-Get:16 http://security.ubuntu.com/ubuntu focal-security/main amd64 Packages [1546 kB]
-Get:17 http://security.ubuntu.com/ubuntu focal-security/multiverse amd64 Packages [25.8 kB]
-Get:18 http://security.ubuntu.com/ubuntu focal-security/restricted amd64 Packages [961 kB]
-Fetched 21.0 MB in 1s (16.2 MB/s)
+Get:1 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+Get:2 http://archive.ubuntu.com/ubuntu noble InRelease [256 kB]
+Get:3 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [1434 kB]
+Get:4 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [22.1 kB]
+Get:5 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1088 kB]
+Get:6 http://security.ubuntu.com/ubuntu noble-security/main amd64 Packages [1081 kB]
+Get:7 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+Get:8 http://archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+Get:9 http://archive.ubuntu.com/ubuntu noble/main amd64 Packages [1808 kB]
+Get:10 http://archive.ubuntu.com/ubuntu noble/multiverse amd64 Packages [331 kB]
+Get:11 http://archive.ubuntu.com/ubuntu noble/restricted amd64 Packages [117 kB]
+Get:12 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages [19.3 MB]
+Get:13 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [26.7 kB]
+Get:14 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [1478 kB]
+Get:15 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1385 kB]
+Get:16 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1399 kB]
+Get:17 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [31.8 kB]
+Get:18 http://archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages [48.0 kB]
+Fetched 30.2 MB in 3s (11.1 MB/s)
 Reading package lists...
 + apt-get -y dist-upgrade
 Reading package lists...
 Building dependency tree...
 Reading state information...
 Calculating upgrade...
-The following packages will be upgraded:
-  bsdutils fdisk libblkid1 libfdisk1 libmount1 libsmartcols1 libuuid1 mount
-  util-linux
-debconf: delaying package configuration, since apt-utils is not installed
-9 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
-Need to get 0 B/1900 kB of archives.
-After this operation, 9216 B of additional disk space will be used.
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 4127 files and directories currently installed.)
-Preparing to unpack .../bsdutils_1%3a2.34-0.1ubuntu9.3_amd64.deb ...
-Unpacking bsdutils (1:2.34-0.1ubuntu9.3) over (1:2.34-0.1ubuntu9.1) ...
-Setting up bsdutils (1:2.34-0.1ubuntu9.3) ...
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 4127 files and directories currently installed.)
-Preparing to unpack .../libblkid1_2.34-0.1ubuntu9.3_amd64.deb ...
-Unpacking libblkid1:amd64 (2.34-0.1ubuntu9.3) over (2.34-0.1ubuntu9.1) ...
-Setting up libblkid1:amd64 (2.34-0.1ubuntu9.3) ...
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 4127 files and directories currently installed.)
-Preparing to unpack .../libuuid1_2.34-0.1ubuntu9.3_amd64.deb ...
-Unpacking libuuid1:amd64 (2.34-0.1ubuntu9.3) over (2.34-0.1ubuntu9.1) ...
-Setting up libuuid1:amd64 (2.34-0.1ubuntu9.3) ...
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 4127 files and directories currently installed.)
-Preparing to unpack .../libfdisk1_2.34-0.1ubuntu9.3_amd64.deb ...
-Unpacking libfdisk1:amd64 (2.34-0.1ubuntu9.3) over (2.34-0.1ubuntu9.1) ...
-Preparing to unpack .../libmount1_2.34-0.1ubuntu9.3_amd64.deb ...
-Unpacking libmount1:amd64 (2.34-0.1ubuntu9.3) over (2.34-0.1ubuntu9.1) ...
-Setting up libmount1:amd64 (2.34-0.1ubuntu9.3) ...
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 4127 files and directories currently installed.)
-Preparing to unpack .../libsmartcols1_2.34-0.1ubuntu9.3_amd64.deb ...
-Unpacking libsmartcols1:amd64 (2.34-0.1ubuntu9.3) over (2.34-0.1ubuntu9.1) ...
-Setting up libsmartcols1:amd64 (2.34-0.1ubuntu9.3) ...
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 4127 files and directories currently installed.)
-Preparing to unpack .../fdisk_2.34-0.1ubuntu9.3_amd64.deb ...
-Unpacking fdisk (2.34-0.1ubuntu9.3) over (2.34-0.1ubuntu9.1) ...
-Preparing to unpack .../util-linux_2.34-0.1ubuntu9.3_amd64.deb ...
-Unpacking util-linux (2.34-0.1ubuntu9.3) over (2.34-0.1ubuntu9.1) ...
-Setting up util-linux (2.34-0.1ubuntu9.3) ...
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 4127 files and directories currently installed.)
-Preparing to unpack .../mount_2.34-0.1ubuntu9.3_amd64.deb ...
-Unpacking mount (2.34-0.1ubuntu9.3) over (2.34-0.1ubuntu9.1) ...
-Setting up libfdisk1:amd64 (2.34-0.1ubuntu9.3) ...
-Setting up mount (2.34-0.1ubuntu9.3) ...
-Setting up fdisk (2.34-0.1ubuntu9.3) ...
-Processing triggers for libc-bin (2.31-0ubuntu9.2) ...
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
 + apt-get install -y fuse-overlayfs
 Reading package lists...
 Building dependency tree...
 Reading state information...
 The following additional packages will be installed:
-  fuse3 libfuse3-3
+  adduser fuse3 libfuse3-3
+Suggested packages:
+  liblocale-gettext-perl perl cron quota ecryptfs-utils
 The following NEW packages will be installed:
-  fuse-overlayfs fuse3 libfuse3-3
+  adduser fuse-overlayfs fuse3 libfuse3-3
 debconf: delaying package configuration, since apt-utils is not installed
-0 upgraded, 3 newly installed, 0 to remove and 0 not upgraded.
-Need to get 0 B/137 kB of archives.
-After this operation, 489 kB of additional disk space will be used.
+0 upgraded, 4 newly installed, 0 to remove and 0 not upgraded.
+Need to get 0 B/255 kB of archives.
+After this operation, 973 kB of additional disk space will be used.
+Selecting previously unselected package adduser.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 4381 files and directories currently installed.)
+Preparing to unpack .../adduser_3.137ubuntu1_all.deb ...
+Unpacking adduser (3.137ubuntu1) ...
+Setting up adduser (3.137ubuntu1) ...
 Selecting previously unselected package libfuse3-3:amd64.
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 4127 files and directories currently installed.)
-Preparing to unpack .../libfuse3-3_3.9.0-2_amd64.deb ...
-Unpacking libfuse3-3:amd64 (3.9.0-2) ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 4429 files and directories currently installed.)
+Preparing to unpack .../libfuse3-3_3.14.0-5build1_amd64.deb ...
+Unpacking libfuse3-3:amd64 (3.14.0-5build1) ...
 Selecting previously unselected package fuse3.
-Preparing to unpack .../fuse3_3.9.0-2_amd64.deb ...
-Unpacking fuse3 (3.9.0-2) ...
+Preparing to unpack .../fuse3_3.14.0-5build1_amd64.deb ...
+Unpacking fuse3 (3.14.0-5build1) ...
 Selecting previously unselected package fuse-overlayfs.
-Preparing to unpack .../fuse-overlayfs_0.7.6-1_amd64.deb ...
-Unpacking fuse-overlayfs (0.7.6-1) ...
-Setting up libfuse3-3:amd64 (3.9.0-2) ...
-Setting up fuse3 (3.9.0-2) ...
-Setting up fuse-overlayfs (0.7.6-1) ...
-Processing triggers for libc-bin (2.31-0ubuntu9.2) ...
+Preparing to unpack .../fuse-overlayfs_1.13-1_amd64.deb ...
+Unpacking fuse-overlayfs (1.13-1) ...
+Setting up libfuse3-3:amd64 (3.14.0-5build1) ...
+Setting up fuse3 (3.14.0-5build1) ...
+Setting up fuse-overlayfs (1.13-1) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.4) ...
 INFO:    Adding environment to container
 INFO:    Adding runscript
 INFO:    Creating SIF file...
-INFO:    Build complete: fuse-overlayfs.sif
+INFO:    Build complete: fuse-overlays.sif
