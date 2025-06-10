@@ -20,7 +20,7 @@ From: ubuntu:24.04
           git git-lfs aria2 meld qemu-utils p7zip-full p7zip-rar jmol povray \
           units putty jq sqlitebrowser gv screen dos2unix vmtouch parallel pbzip2 elinks lynx \
           mosquitto-clients inkscape bat eza duf silversearcher-ag gnumeric binutils edfbrowser \
-          rsync xz-utils xarchiver tmux oathtool lftp dotnet-sdk-8.0 poppler-utils
+          rsync xz-utils xarchiver tmux oathtool lftp dotnet-sdk-8.0 poppler-utils grace gnuplot
 
   #strip --remove-section=.note.ABI-tag /usr/lib/x86_64-linux-gnu/libQt5Core.so.5
 
