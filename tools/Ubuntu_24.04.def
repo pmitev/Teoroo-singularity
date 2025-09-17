@@ -17,7 +17,7 @@ From: ubuntu:24.04
 
   apt-get update && apt-get -y dist-upgrade && \
   apt-get install -y uuid-runtime wget mc xclip vim gawk ncdu squashfs-tools squashfuse \
-          git git-lfs aria2 meld qemu-utils p7zip-full p7zip-rar jmol povray \
+          git git-lfs aria2 meld qemu-utils p7zip-full p7zip-rar jmol povray  evince vim-gtk3 \
           units putty jq sqlitebrowser gv screen dos2unix vmtouch parallel pbzip2 elinks lynx \
           mosquitto-clients inkscape bat eza duf silversearcher-ag gnumeric binutils edfbrowser \
           rsync xz-utils xarchiver tmux oathtool lftp dotnet-sdk-8.0 poppler-utils grace gnuplot
