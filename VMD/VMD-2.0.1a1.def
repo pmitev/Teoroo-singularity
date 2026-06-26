@@ -1,0 +1,38 @@
+Bootstrap: docker
+From: ubuntu:24.04
+
+%files
+  vmd-2.0.1a1.bin.LINUXAMD64.tar.gz /
+
+%environment
+  export LC_ALL=C.utf8
+  export PYTHONNOUSERSITE=True  
+
+%post
+  export LC_ALL=C.utf8
+  export PYTHONNOUSERSITE=True
+  export DEBIAN_FRONTEND=noninteractive
+
+  # apt packages cached in /tmp
+  mkdir -p /tmp/apt24 &&  echo "Dir::Cache "/tmp/apt24";" > /etc/apt/apt.conf.d/singularity-cache.conf
+
+  apt-get update && apt-get -y dist-upgrade && \
+  apt-get install -y git gawk wget mc vim nano \
+                    python3-pip python3-dev python3-tk build-essential gnuplot cmake \
+                    libxmu6 libxss1 libxft2 libquadmath0 \
+                    bzip2 libgl1-mesa-dri libglu1-mesa libglib2.0-0 libgtk2.0-0 libgomp1 \
+                    less libopenblas-dev csh openssh-client
+
+  mkdir /installs && cd /installs
+  mv /vmd-2.0.1a1.bin.LINUXAMD64.tar.gz .
+  tar xvf vmd-2.0.1a1.bin.LINUXAMD64.tar.gz && cd vmd-2.0.1a1 && ./configure && cd src && make install
+  cd /installs && rm -r vmd-2.0.1a1.bin.LINUXAMD64.tar.gz vmd-2.0.1a1
+
+
+%runscript
+#!/bin/sh
+  if command -v $SINGULARITY_NAME > /dev/null 2> /dev/null; then
+    exec $SINGULARITY_NAME "$@"
+  else
+    echo "# ERROR !!! Command $SINGULARITY_NAME not found in the container"
+  fi
